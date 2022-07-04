@@ -13,13 +13,13 @@ class OwnersView(View):
     def post(self, request):
         data = json.loads(request.body)
         name1 = Owner.objects.create(
-            name = data['name'], 
-            email = data['email'], 
+            name=data['name'],
+            email=data['email'],
             age=data['age']
         )
         Dog.objects.create(
-            name = data['dog_name'], 
-            age= data['dog_age'],
-            owner= name1 
+            name=data['dog_name'],
+            age=data['dog_age'],
+            owner=name1
         )
-        return JsonResponse({'message':'created'}, status=201)
+        return JsonResponse({'message': 'created'}, status=201)
